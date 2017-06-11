@@ -28,6 +28,7 @@ class ExpressionParser
         if (preg_match('#^\$([a-z_]+)#', $exprString, $matches)) {
             $contextNodeVarName = $matches[1];
             $exprString = substr($exprString, strlen($contextNodeVarName) + 1);
+            $exprString = './/'.ltrim($exprString, '/');
         }
 
         if (preg_match('#next\-sibling::([a-z1-9]+)#', $exprString, $matches)) {
