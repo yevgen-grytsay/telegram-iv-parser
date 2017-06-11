@@ -28,7 +28,7 @@ class LineParser
                 return VariableAssignment::parse($string);
                 break;
             case '<':
-                //tag
+                return ReplaceTag::parse($string);
                 break;
             default:
                 return PropertyAssignment::parse($string);

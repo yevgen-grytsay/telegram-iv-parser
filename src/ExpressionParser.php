@@ -18,6 +18,12 @@ class ExpressionParser
             return filter_var($exprString, FILTER_VALIDATE_BOOLEAN);
         }
 
+        return new SingleNodeXpathExpression(self::parseXpathExpression($exprString));
+    }
+
+    public static function parseXpathExpression($exprString)
+    {
+        $exprString = trim($exprString);
         $contextNodeVarName = null;
         if (preg_match('#^\$([a-z_]+)#', $exprString, $matches)) {
             $contextNodeVarName = $matches[1];

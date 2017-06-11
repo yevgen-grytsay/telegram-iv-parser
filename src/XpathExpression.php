@@ -37,11 +37,10 @@ class XpathExpression implements Expression
         if ($this->ctxNodeVarName) {
             $ctxNode = $context->getValue($this->ctxNodeVarName);
             if (!$ctxNode) {
-                return null;
+                return new DOMNodeList();
             }
         }
-        $nodes = $context->findXpath($this->expression, $ctxNode);
 
-        return $nodes->length ? $nodes->item(0) : null;
+        return $context->findXpath($this->expression, $ctxNode);
     }
 }

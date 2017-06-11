@@ -99,4 +99,13 @@ class DomContext implements Context
     {
         $this->vars[$name] = $value;
     }
+
+    /**
+     * @param string $name
+     * @return \DOMElement
+     */
+    public function createElement($name)
+    {
+        return $this->doc->createElement($name);
+    }
 }

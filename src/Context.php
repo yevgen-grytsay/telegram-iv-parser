@@ -44,4 +44,10 @@ interface Context
      * @throws \Exception
      */
     public function getValue($name);
+
+    /**
+     * @param string $name
+     * @return \DOMElement
+     */
+    public function createElement($name);
 }
