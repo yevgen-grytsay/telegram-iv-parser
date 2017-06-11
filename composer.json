@@ -9,7 +9,11 @@
       "email": "email@example.com"
     }
   ],
+  "autoload": {
+    "classmap": ["src/"]
+  },
   "require": {
-    "hoa/compiler": "~3.0"
+    "hoa/compiler": "~3.0",
+    "nette/tokenizer": "~2.2"
   }
 }
