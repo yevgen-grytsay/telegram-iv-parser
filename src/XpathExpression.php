@@ -38,21 +38,9 @@ class XpathExpression implements Expression
             $ctxNode = $context->getValue($this->ctxNodeVarName);
             if (!$ctxNode) {
                 return null;
-//                throw new Exception(sprintf('Context node can not be null (key: "%s")', $this->ctxNodeVarName));
             }
         }
-//        $nodes = $context->findXpath($this->expression, $ctxNode);
-        /** @var \DOMElement $ctxNode */
-        if ($ctxNode) {
-            $path = $ctxNode->getNodePath() . $this->expression;
-            $nodes = $context->findXpath($path);
-        } else {
-            $nodes = $context->findXpath($this->expression);
-        }
-
-//        if (!$nodes->length) {
-//            throw new \Exception(sprintf('Node not found (xpath: "%s")', $this->expression));
-//        }
+        $nodes = $context->findXpath($this->expression, $ctxNode);
 
         return $nodes->length ? $nodes->item(0) : null;
     }
