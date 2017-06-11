@@ -6,6 +6,7 @@
  */
 class BooleanExpression implements Expression
 {
+    const COND_EXISTS = 'exists';
     /**
      * @var bool|callable
      */
@@ -14,7 +15,7 @@ class BooleanExpression implements Expression
     public static function createUnary($require, $name, $arg)
     {
         switch ($name) {
-            case 'exists':
+            case self::COND_EXISTS:
                 return new Condition($require === '!', new CallbackBooleanExpression(function (Context $context) use($arg) {
                     $els = $context->findXpath($arg);
                     return $els->length > 0;

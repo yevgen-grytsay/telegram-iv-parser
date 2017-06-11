@@ -46,7 +46,7 @@ class Condition implements Expression
             return new BooleanExpression($val);
         }
 
-        $conditions = ['exists', 'domain'];
+        $conditions = [BooleanExpression::COND_EXISTS];
         if (preg_match('#^([\?\!])([a-z_]+):(.+)$#', $string, $matches) && in_array($matches[2], $conditions, true)) {
             return BooleanExpression::createUnary($matches[1], $matches[2], $matches[3]);
         }
