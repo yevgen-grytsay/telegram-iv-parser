@@ -11,7 +11,7 @@ $compiler = Hoa\Compiler\Llk\Llk::load(new Hoa\File\Read('Iv.pp'));
 // 2. Parse a data.
 $template = '?exists: /html/head/meta[@property="article:published_time"]
 ?true
-body';
+body: //article';
 //$template = 'body';
 
 $dump = new Hoa\Compiler\Visitor\Dump();
