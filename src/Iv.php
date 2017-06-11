@@ -9,18 +9,11 @@ require_once __DIR__.'/../vendor/autoload.php';
 $compiler = Hoa\Compiler\Llk\Llk::load(new Hoa\File\Read('Iv.pp'));
 
 // 2. Parse a data.
-$template = '
-?domain: .+\.abc\.com
-?domain: .+\.abc\.com
-!path: /news/
-';
+$template = '?exists: /html/head/meta[@property="article:published_time"]
+?true
+body';
+//$template = 'body';
 
-$lines = explode("\n", $template);
 $dump = new Hoa\Compiler\Visitor\Dump();
-foreach ($lines as $line) {
-    if (!$line) {
-        continue;
-    }
-    $ast = $compiler->parse($line);
-    echo $dump->visit($ast), PHP_EOL;
-}
+$ast = $compiler->parse($template);
+echo $dump->visit($ast), PHP_EOL;
