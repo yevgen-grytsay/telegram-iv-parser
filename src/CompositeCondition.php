@@ -39,4 +39,11 @@ class CompositeCondition implements Expression
 
         return $optResult ?? true;
     }
+
+    public function __toString()
+    {
+        return implode("\n", array_map(function (Condition $cond) {
+            return (string) $cond;
+        }, $this->conditions));
+    }
 }

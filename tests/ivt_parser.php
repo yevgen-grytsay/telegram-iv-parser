@@ -17,7 +17,10 @@ $pi = new ParserIterator($lines, new LineParser());
 $tp = new TemplateParser($ctx);
 $tree = $tp->parse($pi);
 
-var_dump($tree);
+array_walk($tree, function ($stmt) {
+    echo $stmt, PHP_EOL;
+});
+//var_dump($tree);
 
 //$emptyLine = new stdClass();
 //$comment = new stdClass();

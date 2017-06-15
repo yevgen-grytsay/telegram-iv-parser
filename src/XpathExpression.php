@@ -43,4 +43,12 @@ class XpathExpression implements Expression
 
         return $context->findXpath($this->expression, $ctxNode);
     }
+
+    public function __toString()
+    {
+        if ($this->ctxNodeVarName) {
+            return '$'.$this->ctxNodeVarName .'/'. ltrim($this->expression, './');
+        }
+        return (string) $this->expression;
+    }
 }

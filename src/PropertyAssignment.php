@@ -58,7 +58,7 @@ class PropertyAssignment implements Expression
     }
 
     /**
-     * @param $context
+     * @param Context $context
      * @return mixed
      */
     public function evaluate($context)
@@ -75,5 +75,18 @@ class PropertyAssignment implements Expression
         else if ($this->override === self::OVERRIDE_NON_EMPTY && $val = $this->expr->evaluate($context)) {
             $context->setProp($this->name, $val);
         }
+    }
+
+    public function __toString()
+    {
+        $sufix = '';
+        if ($this->override === self::OVERRIDE_NON_EMPTY) {
+            $sufix = '!';
+        }
+        else if ($this->override === self::OVERRIDE_ANY) {
+            $sufix = '!!';
+        }
+
+        return sprintf('%s%s: %s', $this->name, $sufix, (string) $this->expr);
     }
 }

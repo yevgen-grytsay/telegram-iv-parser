@@ -7,7 +7,7 @@
 interface Expression
 {
     /**
-     * @param $context
+     * @param Context $context
      * @return mixed
      * @throws Exception
      */

@@ -28,4 +28,9 @@ class CallbackBooleanExpression implements Expression
     {
         return call_user_func($this->callback, $context);
     }
+
+    public function __toString()
+    {
+        return '[callback boolean expression]';
+    }
 }

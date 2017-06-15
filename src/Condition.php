@@ -53,4 +53,9 @@ class Condition implements Expression
 
         throw new ParserException(sprintf('String "%s" is invalid unary condition', $string));
     }
+
+    public function __toString()
+    {
+        return ($this->required ? '!' : '?') . (string) $this->expr;
+    }
 }

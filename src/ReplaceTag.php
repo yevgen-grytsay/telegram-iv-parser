@@ -53,4 +53,9 @@ class ReplaceTag implements Expression
             $item->parentNode->replaceChild($newEl, $item);
         }
     }
+
+    public function __toString()
+    {
+        return '<'. $this->tag .'>: '. (string) $this->target;
+    }
 }

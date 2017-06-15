@@ -33,4 +33,9 @@ class SingleNodeXpathExpression implements Expression
         }
         return null;
     }
+
+    public function __toString()
+    {
+        return (string) $this->expr;
+    }
 }
