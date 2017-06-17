@@ -10,11 +10,8 @@ $lines = preg_split('#\n#', $raw);
 
 var_dump($raw);
 
-$doc = new \DOMDocument();
-@$doc->loadHTML('<?xml encoding="UTF-8">' . file_get_contents(__DIR__.'/medium_1.html'));
-$ctx = new \YevgenGrytsay\TelegramIvParser\DomContext($doc);
 $pi = new \YevgenGrytsay\TelegramIvParser\ParserIterator($lines, new \YevgenGrytsay\TelegramIvParser\LineParser());
-$tp = new \YevgenGrytsay\TelegramIvParser\TemplateParser($ctx);
+$tp = new \YevgenGrytsay\TelegramIvParser\TemplateParser();
 $tree = $tp->parse($pi);
 
 array_walk($tree, function ($stmt) {

@@ -35,7 +35,6 @@ class PropertyAssignment implements Statement
      * @param $name
      * @param Expression $expr
      * @param string $override
-     * @internal param string $name
      */
     public function __construct($name, Expression $expr, $override)
     {
@@ -86,14 +85,14 @@ class PropertyAssignment implements Statement
 
     public function __toString()
     {
-        $sufix = '';
+        $suffix = '';
         if ($this->override === self::OVERRIDE_NON_EMPTY) {
-            $sufix = '!';
+            $suffix = '!';
         }
         else if ($this->override === self::OVERRIDE_ANY) {
-            $sufix = '!!';
+            $suffix = '!!';
         }
 
-        return sprintf('%s%s: %s', $this->name, $sufix, (string) $this->expr);
+        return sprintf('%s%s: %s', $this->name, $suffix, (string) $this->expr);
     }
 }
