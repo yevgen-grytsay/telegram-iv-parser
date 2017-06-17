@@ -1,4 +1,5 @@
 <?php
+namespace YevgenGrytsay\TelegramIvParser;
 
 /**
  * @author: yevgen

@@ -1,4 +1,5 @@
 <?php
+namespace YevgenGrytsay\TelegramIvParser;
 
 /**
  * @author: yevgen
@@ -37,7 +38,7 @@ class XpathExpression implements Expression
         if ($this->ctxNodeVarName) {
             $ctxNode = $context->getValue($this->ctxNodeVarName);
             if (!$ctxNode) {
-                return new DOMNodeList();
+                return new \DOMNodeList();
             }
         }
 

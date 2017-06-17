@@ -1,10 +1,11 @@
 <?php
+namespace YevgenGrytsay\TelegramIvParser;
 
 /**
  * @author: yevgen
  * @date: 11.06.17
  */
-class CompositeCondition implements Expression
+class CompositeCondition
 {
     /**
      * @var Condition[]

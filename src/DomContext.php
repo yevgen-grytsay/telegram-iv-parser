@@ -1,4 +1,5 @@
 <?php
+namespace YevgenGrytsay\TelegramIvParser;
 
 /**
  * @author: yevgen
@@ -25,9 +26,9 @@ class DomContext implements Context
 
     /**
      * DomContext constructor.
-     * @param DOMDocument $doc
+     * @param \DOMDocument $doc
      */
-    public function __construct(DOMDocument $doc)
+    public function __construct(\DOMDocument $doc)
     {
         $this->doc = $doc;
         $this->xpath = new \DOMXPath($doc);
@@ -35,8 +36,8 @@ class DomContext implements Context
 
     /**
      * @param string $expr
-     * @param DOMNode|null $context
-     * @return DOMNodeList
+     * @param \DOMNode|null $context
+     * @return \DOMNodeList
      */
     public function findXpath($expr, \DOMNode $context = null)
     {
@@ -82,7 +83,7 @@ class DomContext implements Context
 
     /**
      * @param $name
-     * @throws Exception
+     * @throws \Exception
      */
     private function ensureVariableDeclared($name)
     {
