@@ -1,11 +1,14 @@
 <?php
-namespace YevgenGrytsay\TelegramIvParser;
+namespace YevgenGrytsay\TelegramIvParser\Expression;
+
+use YevgenGrytsay\TelegramIvParser\Context;
+use YevgenGrytsay\TelegramIvParser\Expression;
 
 /**
  * @author: yevgen
  * @date: 11.06.17
  */
-class XpathExpression implements Expression
+class Xpath implements Expression
 {
     /**
      * @var string

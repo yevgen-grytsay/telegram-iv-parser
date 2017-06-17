@@ -34,16 +34,10 @@ class ParserIterator
     public function next()
     {
         if (array_key_exists($this->i + 1, $this->input)) {
-            $prev = $this->i >= 0 ? $this->input[$this->i] : null;
             $maxIndex = count($this->input) - 1;
             $stmt = null;
-            while ($this->i < $maxIndex && !($stmt = $this->lineParser->parse($this->input[++$this->i]))) {
-            }
-
+            while ($this->i < $maxIndex && !($stmt = $this->lineParser->parse($this->input[++$this->i]))) {}
             return $stmt;
-//            if ($stmt->canBeMultiline()) {
-            //todo: implement
-//            }
         }
         return "\0";
     }

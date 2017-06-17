@@ -1,11 +1,16 @@
 <?php
-namespace YevgenGrytsay\TelegramIvParser;
-
 /**
  * @author: yevgen
- * @date: 11.06.17
+ * @date  : 17.06.17
  */
-class CallbackBooleanExpression implements Expression
+
+namespace YevgenGrytsay\TelegramIvParser\Expression;
+
+
+use YevgenGrytsay\TelegramIvParser\Context;
+use YevgenGrytsay\TelegramIvParser\Expression;
+
+class Callback implements Expression
 {
     /**
      * @var callable
@@ -13,7 +18,7 @@ class CallbackBooleanExpression implements Expression
     private $callback;
 
     /**
-     * CallbackBooleanExpression constructor.
+     * Callback constructor.
      * @param callable $callback
      */
     public function __construct(callable $callback)
@@ -22,8 +27,9 @@ class CallbackBooleanExpression implements Expression
     }
 
     /**
-     * @param $context
+     * @param Context $context
      * @return mixed
+     * @throws \Exception
      */
     public function evaluate($context)
     {
@@ -32,6 +38,6 @@ class CallbackBooleanExpression implements Expression
 
     public function __toString()
     {
-        return '[callback boolean expression]';
+        return '[callback expression]';
     }
 }

@@ -1,11 +1,17 @@
 <?php
-namespace YevgenGrytsay\TelegramIvParser;
+namespace YevgenGrytsay\TelegramIvParser\Statement;
+
+use YevgenGrytsay\TelegramIvParser\Context;
+use YevgenGrytsay\TelegramIvParser\Expression;
+use YevgenGrytsay\TelegramIvParser\ExpressionParser;
+use YevgenGrytsay\TelegramIvParser\ParserException;
+use YevgenGrytsay\TelegramIvParser\Statement;
 
 /**
  * @author: yevgen
  * @date: 11.06.17
  */
-class PropertyAssignment implements Expression
+class PropertyAssignment implements Statement
 {
     const OVERRIDE_DEFAULT = 'default';
     const OVERRIDE_NON_EMPTY = 'non-empty';
@@ -60,9 +66,9 @@ class PropertyAssignment implements Expression
 
     /**
      * @param Context $context
-     * @return mixed
+     * @throws \Exception
      */
-    public function evaluate($context)
+    public function execute(Context $context)
     {
         $currentValue = $context->getProp($this->name);
         if (!$currentValue) {

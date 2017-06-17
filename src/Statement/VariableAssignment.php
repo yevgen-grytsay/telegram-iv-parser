@@ -1,11 +1,17 @@
 <?php
-namespace YevgenGrytsay\TelegramIvParser;
+namespace YevgenGrytsay\TelegramIvParser\Statement;
+
+use YevgenGrytsay\TelegramIvParser\Context;
+use YevgenGrytsay\TelegramIvParser\Expression;
+use YevgenGrytsay\TelegramIvParser\ExpressionParser;
+use YevgenGrytsay\TelegramIvParser\ParserException;
+use YevgenGrytsay\TelegramIvParser\Statement;
 
 /**
  * @author: yevgen
  * @date: 11.06.17
  */
-class VariableAssignment implements Expression
+class VariableAssignment implements Statement
 {
     /**
      * @var Expression
@@ -50,9 +56,9 @@ class VariableAssignment implements Expression
 
     /**
      * @param Context $context
-     * @return mixed
+     * @throws \Exception
      */
-    public function evaluate($context)
+    public function execute(Context $context)
     {
         $currentValue = $context->getVariableValue($this->name);
         if ($this->preserve && $currentValue) {

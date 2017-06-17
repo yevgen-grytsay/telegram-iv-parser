@@ -1,6 +1,9 @@
 <?php
 namespace YevgenGrytsay\TelegramIvParser;
 
+use YevgenGrytsay\TelegramIvParser\Expression\SingleNodeXpath;
+use YevgenGrytsay\TelegramIvParser\Expression\Xpath;
+
 /**
  * @author: yevgen
  * @date: 11.06.17
@@ -19,7 +22,7 @@ class ExpressionParser
             return filter_var($exprString, FILTER_VALIDATE_BOOLEAN);
         }
 
-        return new SingleNodeXpathExpression(self::parseXpathExpression($exprString));
+        return new SingleNodeXpath(self::parseXpathExpression($exprString));
     }
 
     public static function parseXpathExpression($exprString)
@@ -43,6 +46,6 @@ class ExpressionParser
             $exprString = str_replace($matches[0], '[contains(concat(" ", normalize-space(@class), " "), " '.$class.' ")]', $exprString);
         }
 
-        return new XpathExpression($exprString, $contextNodeVarName);
+        return new Xpath($exprString, $contextNodeVarName);
     }
 }

@@ -1,6 +1,9 @@
 <?php
 namespace YevgenGrytsay\TelegramIvParser;
 
+use YevgenGrytsay\TelegramIvParser\Expression\CompositeCondition;
+use YevgenGrytsay\TelegramIvParser\Expression\Condition;
+
 /**
  * @author: yevgen
  * @date: 11.06.17
@@ -44,10 +47,10 @@ class TemplateParser
             else if ($stmt instanceof Comment) {
                 $it->skip(Comment::class);
             }
-            else if ($stmt instanceof Expression) {
-                $stmt->evaluate($ctx);
+            else if ($stmt instanceof Statement) {
+                $stmt->execute($ctx);
             } else {
-                throw new Exception('Unknown object');
+                throw new \Exception('Unknown object');
             }
             $tree[] = $stmt;
         }

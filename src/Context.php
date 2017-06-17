@@ -9,9 +9,9 @@ interface Context
 {
     /**
      * @param string $expr
-     * @param DOMNode|null $context
-     * @return DOMNodeList
-     * @throws Exception
+     * @param \DOMNode|null $context
+     * @return \DOMNodeList
+     * @throws \Exception
      */
     public function findXpath($expr, \DOMNode $context = null);
 

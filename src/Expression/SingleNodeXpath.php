@@ -1,22 +1,24 @@
 <?php
-namespace YevgenGrytsay\TelegramIvParser;
+namespace YevgenGrytsay\TelegramIvParser\Expression;
+
+use YevgenGrytsay\TelegramIvParser\Expression;
 
 /**
  * @author: yevgen
  * @date: 11.06.17
  */
-class SingleNodeXpathExpression implements Expression
+class SingleNodeXpath implements Expression
 {
     /**
-     * @var XpathExpression
+     * @var Xpath
      */
     private $expr;
 
     /**
      * SingleNodeXpathExpression constructor.
-     * @param XpathExpression $expr
+     * @param Xpath $expr
      */
-    public function __construct(XpathExpression $expr)
+    public function __construct(Xpath $expr)
     {
         $this->expr = $expr;
     }
@@ -24,7 +26,7 @@ class SingleNodeXpathExpression implements Expression
     /**
      * @param $context
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public function evaluate($context)
     {

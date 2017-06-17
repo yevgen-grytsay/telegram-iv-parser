@@ -1,11 +1,13 @@
 <?php
-namespace YevgenGrytsay\TelegramIvParser;
+namespace YevgenGrytsay\TelegramIvParser\Expression;
+
+use YevgenGrytsay\TelegramIvParser\Expression;
 
 /**
  * @author: yevgen
  * @date: 11.06.17
  */
-class CompositeCondition
+class CompositeCondition implements Expression
 {
     /**
      * @var Condition[]
@@ -14,11 +16,11 @@ class CompositeCondition
 
     /**
      * CompositeCondition constructor.
-     * @param array $consitions
+     * @param array $conditions
      */
-    public function __construct(array $consitions)
+    public function __construct(array $conditions)
     {
-        $this->conditions = $consitions;
+        $this->conditions = $conditions;
     }
 
     /**

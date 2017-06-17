@@ -1,6 +1,11 @@
 <?php
 namespace YevgenGrytsay\TelegramIvParser;
 
+use YevgenGrytsay\TelegramIvParser\Expression\Condition;
+use YevgenGrytsay\TelegramIvParser\Statement\PropertyAssignment;
+use YevgenGrytsay\TelegramIvParser\Statement\ReplaceTag;
+use YevgenGrytsay\TelegramIvParser\Statement\VariableAssignment;
+
 /**
  * @author: yevgen
  * @date: 11.06.17
@@ -13,15 +18,16 @@ class LineParser
         if (!trim($string)) {
             return null;
         }
-        if ($string[0] === '#' || $string[0] === ' ') {
-            return null;
-        }
-
-        if (in_array($string[0], ['?', '!'], true)) {
-            return Condition::parse($string);
-        }
 
         switch ($string[0]) {
+            case '#':
+            case ' ':
+                return null;
+                break;
+            case '?':
+            case '!':
+                return Condition::parse($string);
+                break;
             case '@':
                 // function call
                 break;

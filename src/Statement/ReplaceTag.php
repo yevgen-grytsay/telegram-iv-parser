@@ -1,27 +1,32 @@
 <?php
-namespace YevgenGrytsay\TelegramIvParser;
+namespace YevgenGrytsay\TelegramIvParser\Statement;
+
+use YevgenGrytsay\TelegramIvParser\Context;
+use YevgenGrytsay\TelegramIvParser\Expression\Xpath;
+use YevgenGrytsay\TelegramIvParser\ExpressionParser;
+use YevgenGrytsay\TelegramIvParser\Statement;
 
 /**
  * @author: yevgen
  * @date: 11.06.17
  */
-class ReplaceTag implements Expression
+class ReplaceTag implements Statement
 {
     /**
      * @var string
      */
     private $tag;
     /**
-     * @var XpathExpression
+     * @var Xpath
      */
     private $target;
 
     /**
      * ReplaceTag constructor.
      * @param string $tag
-     * @param XpathExpression $target
+     * @param Xpath  $target
      */
-    public function __construct($tag, XpathExpression $target)
+    public function __construct($tag, Xpath $target)
     {
         $this->tag = $tag;
         $this->target = $target;
@@ -39,10 +44,9 @@ class ReplaceTag implements Expression
 
     /**
      * @param Context $context
-     * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
-    public function evaluate($context)
+    public function execute(Context $context)
     {
         $targetList = $this->target->evaluate($context);
         /** @var \DOMElement $item */

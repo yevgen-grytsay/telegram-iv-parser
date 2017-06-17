@@ -10,7 +10,7 @@ interface Expression
     /**
      * @param Context $context
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     // TODO: use RuntimeException
     public function evaluate($context);
