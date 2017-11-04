@@ -19,6 +19,8 @@ class LineParser
             return null;
         }
 
+        // TODO: cut off comments from the ends of the lines
+
         switch ($string[0]) {
             case '#':
             case ' ':

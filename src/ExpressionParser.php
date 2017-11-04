@@ -48,4 +48,29 @@ class ExpressionParser
 
         return new Xpath($exprString, $contextNodeVarName);
     }
+
+    public static function parseFunctionCall($string)
+    {
+        $pattern = '#'. implode('', [
+            '^@([a-z_]+)',
+            '(\([^:]*\))?',
+            '(:(.+))?$'
+        ]) .'#';
+        if (preg_match($pattern, $string, $matches)) {
+            $name = trim($matches[1]);
+
+            $args = [];
+            if (!empty($matches[2])) {
+                $argsDef = trim($matches[2], ' ()');
+                $args = explode(',', $argsDef);
+                $args = array_map('trim', $args);
+            }
+
+            $xpath = '';
+            if (!empty($matches[4])) {
+                $xpath = trim($matches[4]);
+            }
+            return [$name, $args, $xpath];
+        }
+    }
 }

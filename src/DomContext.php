@@ -73,7 +73,7 @@ class DomContext implements Context
     /**
      * @param string $name
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public function getVariableValue($name)
     {

@@ -11,6 +11,11 @@ use YevgenGrytsay\TelegramIvParser\Statement\ConditionalBlock;
  */
 class TemplateParser
 {
+    /**
+     * @param ParserIterator $it
+     * @return array
+     * @throws \Exception
+     */
     public function parse(ParserIterator $it)
     {
 

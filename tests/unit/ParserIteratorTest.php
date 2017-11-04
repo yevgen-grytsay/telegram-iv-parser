@@ -5,6 +5,10 @@
  */
 
 use PHPUnit\Framework\TestCase;
+use YevgenGrytsay\TelegramIvParser\Comment;
+use YevgenGrytsay\TelegramIvParser\Expression\Condition;
+use YevgenGrytsay\TelegramIvParser\LineParser;
+use YevgenGrytsay\TelegramIvParser\ParserIterator;
 
 class ParserIteratorTest extends TestCase
 {
